@@ -1,0 +1,74 @@
+/* src/components/Settings.css */
+
+body.settings-body, html.settings-body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e8f5e9; /* Light green background */
+  }
+  
+  .settings-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .settingsform-container {
+    width: 100%;
+    max-width: 600px; /* Increase the max-width to make the form wider */
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text inside the container */
+  }
+  
+  .auth-header {
+    color: #388e3c; /* Dark green color */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+  }
+  
+  input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #c8e6c9; /* Light green border */
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white; /* Ensure the background color is white */
+    color: black; /* Ensure the text color is black */
+  }
+  
+  button {
+    width: 100px; /* Fixed width */
+    padding: 10px; /* Smaller padding */
+    font-size: 0.9em; /* Smaller font size */
+    border: none;
+    background-color: #ccc; /* Grey color */
+    color: white;
+    cursor: pointer;
+    border-radius: 6px; /* Smaller border radius */
+    margin-top: 20px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex; /* Align items in flex */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  button:hover {
+    background-color: #555; /* Darker grey on hover */
+  }
+  
+  button .fa-save {
+    margin-right: 5px; /* Space between icon and text */
+  }
+  
