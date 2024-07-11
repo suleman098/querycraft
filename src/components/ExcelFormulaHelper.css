@@ -1,0 +1,179 @@
+/* src/components/ExcelFormulaHelper.css */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e8f5e9; /* Set background color to white */
+}
+
+.formula-helper {
+  display: flex;
+  flex-direction: column; /* Ensure flex direction is column to stack elements vertically */
+  align-items: center; /* Center horizontally */
+  padding: 20px; /* Add padding around the containers */
+  box-sizing: border-box;
+  margin-top: 60px; /* Adjust based on the height of your navbar */
+}
+
+.headline-image {
+  max-width: 80%; /* Adjust the max-width as needed */
+  height: auto;
+  margin-bottom: 20px; /* Space between image and containers */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Center the buttons vertically */
+  width: 100%;
+  margin-bottom: 20px; /* Space between buttons and helper content */
+}
+
+.mode-button {
+  width: 100px; /* Fixed width */
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  padding: 5px 10px; /* Smaller padding */
+  font-size: 0.8em; /* Smaller font size */
+  border: none;
+  background-color: #ccc; /* Grey color */
+  color: white;
+  cursor: pointer;
+  border-radius: 10px; /* Smaller border radius */
+  margin: 0 5px;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.mode-button:hover, .mode-button.active {
+  background-color: #90ee90; /* Light green on hover and when active */
+}
+
+.mode-button img.button-logo {
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  margin-right: 5px; /* Space between logo and text */
+}
+
+.helper-content {
+  display: flex;
+  justify-content: space-around; /* Position containers next to each other with less space */
+  align-items: flex-start; /* Align containers to the top */
+  width: 100%; /* Full width of the container */
+}
+
+.input-container, .output-container {
+  width: 45%; /* Fixed width for both containers */
+  min-height: 400px; /* Minimum height for both containers */
+  padding: 20px;
+  border: 1px solid #c8e6c9; /* Light green border */
+  border-radius: 10px; /* Slightly larger border radius */
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow underneath containers */
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+}
+
+.input-box {
+  width: 100%;
+  flex: 1; /* Fill available space */
+  padding: 10px; /* Adjust padding for better user experience */
+  font-size: 1em;
+  border: 1px solid #c8e6c9; /* Light green border */
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  resize: none; /* Prevent manual resizing */
+  overflow-y: auto; /* Add vertical scrollbar if needed */
+}
+
+.submit-button {
+  width: 100px; /* Fixed width */
+  align-self: center; /* Center align */
+  padding: 6px 12px; /* Smaller padding */
+  font-size: 0.8em; /* Smaller font size */
+  border: none;
+  background-color: #ccc; /* Grey color */
+  color: white;
+  cursor: pointer;
+  border-radius: 10px; /* Smaller border radius */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #555; /* Darker grey on hover */
+}
+
+.output-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #c8e6c9; /* Light green border */
+  border-radius: 6px;
+  white-space: pre-wrap; /* Preserve whitespace for explanation */
+  overflow-y: auto; /* Add vertical scrollbar if needed */
+}
+
+.formula {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #c8e6c9; /* Light green border */
+  border-radius: 6px;
+  white-space: pre-wrap; /* Preserve whitespace for explanation */
+  overflow-y: auto; /* Add vertical scrollbar if needed */
+  margin-bottom: 10px;
+  resize: none;
+}
+
+.explanation {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #c8e6c9; /* Light green border */
+  border-radius: 6px;
+  white-space: pre-wrap; /* Preserve whitespace for explanation */
+  overflow-y: auto; /* Add vertical scrollbar if needed */
+  resize: none;
+  flex: 1;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  margin-top: 20px; /* Space above the buttons */
+}
+
+.action-button {
+  width: 100px; /* Fixed width */
+  padding: 6px 12px; /* Smaller padding */
+  font-size: 0.8em; /* Smaller font size */
+  border: none;
+  background-color: #ccc; /* Grey color */
+  color: white;
+  cursor: pointer;
+  border-radius: 10px; /* Smaller border radius */
+  margin: 0 10px; /* Space between buttons */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #555; /* Darker grey on hover */
+}
+
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

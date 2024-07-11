@@ -1,0 +1,33 @@
+.toastify-custom {
+  border-radius: 12px !important;
+  width: 300px !important;
+}
+
+.toastify-custom .Toastify__toast--default {
+  background: #604444;
+  color: #333;
+}
+
+.toastify-custom .Toastify__toast--success {
+  background: #4caf50;
+  color: #fff;
+}
+
+.toastify-custom .Toastify__toast--error {
+  background: #f44336;
+  color: #fff;
+}
+
+.toastify-custom .Toastify__toast--info {
+  background: #2196f3;
+  color: #fff;
+}
+
+.toastify-custom .Toastify__toast--warning {
+  background: #ff9800;
+  color: #fff;
+}
+
+.toastify-custom .Toastify__progress-bar--default {
+  background: #4caf50;
+}
