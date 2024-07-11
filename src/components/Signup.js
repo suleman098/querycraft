@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../firebaseConfig'; // Ensure you import db
 import './Auth.css';
-import '../ToastifyCustom.css'; // Import custom Toastify CSS
 import logo from '../images/logo23.png'; // Adjust the path to your logo image
 import Login from './Login';
 import { ToastContainer, toast } from 'react-toastify';

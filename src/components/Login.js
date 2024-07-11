@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import './Auth.css';
-import '../ToastifyCustom.css'; // Import custom Toastify CSS
 import logo from '../images/logo23.png'; // Adjust the path to your logo image
 import Signup from './Signup';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState('');

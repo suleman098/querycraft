@@ -3,6 +3,7 @@ import axios from 'axios';
 import './ExcelFormulaHelper.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ClipLoader } from 'react-spinners';
 import headlineImage from '../images/headline1.png'; // Adjust the path as needed
 import sqlLogo from '../images/sql-logo.png'; // Import the SQL logo
 import excelLogo from '../images/excel-logo.png'; // Import the Excel logo
@@ -10,21 +11,24 @@ import { isValidExcelDescription } from '../utils/validateExcel';
 import { isValidSQLDescription } from '../utils/validateSQL';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faCopy, faTrash } from '@fortawesome/free-solid-svg-icons'; // Import icons
+import '../ToastifyCustom.css'; // Import custom Toastify CSS
 
 const FormulaHelper = () => {
   const [description, setDescription] = useState('');
   const [formula, setFormula] = useState('');
   const [explanation, setExplanation] = useState('');
   const [mode, setMode] = useState('excel');
+  const [loading, setLoading] = useState(false);
 
   const handleGenerate = async () => {
     const isValidDescription = mode === 'excel' ? isValidExcelDescription : isValidSQLDescription;
-    
+
     if (!isValidDescription(description).valid) {
-      toast.error(isValidDescription(description).error);
+      toast.error(isValidDescription(description).error, { className: 'toastify-custom' });
       return;
     }
-    
+
+    setLoading(true);
     try {
       const response = await axios.post('http://localhost:5000/chat', {
         message: description,
@@ -33,9 +37,12 @@ const FormulaHelper = () => {
       const data = response.data.message.split('\n');
       setFormula(data[0]);
       setExplanation(data.slice(1).join('\n'));
+      toast.success('Formula/Query generated successfully!', { className: 'toastify-custom' });
     } catch (error) {
       console.error('Error processing request:', error.response ? error.response.data : error.message);
-      toast.error('There was an error processing your request. Please try again.');
+      toast.error('There was an error processing your request. Please try again.', { className: 'toastify-custom' });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,15 +53,16 @@ const FormulaHelper = () => {
   const handleCopy = () => {
     const textToCopy = `Formula: ${formula}\nExplanation: ${explanation}`;
     navigator.clipboard.writeText(textToCopy).then(() => {
-      toast.success('Copied to clipboard!');
+      toast.success('Copied to clipboard!', { className: 'toastify-custom' });
     }).catch(() => {
-      toast.error('Failed to copy!');
+      toast.error('Failed to copy!', { className: 'toastify-custom' });
     });
   };
 
   const handleClear = () => {
     setFormula('');
     setExplanation('');
+    toast.info('Cleared the output!', { className: 'toastify-custom' });
   };
 
   const handleModeChange = (newMode) => {
@@ -98,27 +106,35 @@ const FormulaHelper = () => {
           </button>
         </div>
         <div className="output-container">
-          <textarea
-            className="formula"
-            value={formula}
-            readOnly
-            rows={2}
-          />
-          <textarea
-            className="explanation"
-            value={explanation}
-            readOnly
-          />
-          <div className="action-buttons">
-            <button className="action-button" onClick={handleCopy}>
-              <FontAwesomeIcon icon={faCopy} />
-              Copy
-            </button>
-            <button className="action-button" onClick={handleClear}>
-              <FontAwesomeIcon icon={faTrash} />
-              Clear
-            </button>
-          </div>
+          {loading ? (
+            <div className="spinner-container">
+              <ClipLoader size={50} color={"#123abc"} loading={loading} />
+            </div>
+          ) : (
+            <>
+              <textarea
+                className="formula"
+                value={formula}
+                readOnly
+                rows={2}
+              />
+              <textarea
+                className="explanation"
+                value={explanation}
+                readOnly
+              />
+              <div className="action-buttons">
+                <button className="action-button" onClick={handleCopy}>
+                  <FontAwesomeIcon icon={faCopy} />
+                  Copy
+                </button>
+                <button className="action-button" onClick={handleClear}>
+                  <FontAwesomeIcon icon={faTrash} />
+                  Clear
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

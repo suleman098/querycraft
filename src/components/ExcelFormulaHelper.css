@@ -169,3 +169,11 @@ body, html {
 .action-button:hover {
   background-color: #555; /* Darker grey on hover */
 }
+
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

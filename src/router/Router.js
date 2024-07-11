@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { motion, AnimatePresence } from 'framer-motion';
 import ExcelFormulaHelper from '../components/ExcelFormulaHelper';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -15,39 +15,31 @@ const AppRouter = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(true);
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setIsLoggingOut(!currentUser && user !== null);
       setUser(currentUser);
       setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [user]);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const getClassNames = () => {
-    if (isLoggingOut && location.pathname === '/login') {
-      return 'fade';
-    }
-    return 'fade';
-  };
-
   return (
     <div className="App">
       {user && <SideMenu />}
       <div className={user ? "main-content" : "auth-content"}>
-        <TransitionGroup component={null}>
-          <CSSTransition
+        <AnimatePresence mode="wait">
+          <motion.div
             key={location.key}
-            classNames={getClassNames()}
-            timeout={500}
-            exit={!(isLoggingOut && location.pathname === '/login')}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
           >
             <Routes location={location}>
               <Route
@@ -86,8 +78,8 @@ const AppRouter = () => {
               <Route path="/excel-helper" element={user ? <ExcelFormulaHelper /> : <Navigate to="/login" />} />
               <Route path="*" element={<Navigate to={user ? "/excel-helper" : "/login"} />} />
             </Routes>
-          </CSSTransition>
-        </TransitionGroup>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
