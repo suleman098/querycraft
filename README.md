@@ -67,24 +67,31 @@ export { auth, db };
 Set Up Firebase Hosting
 Initialize Firebase in your project.
 
-npx firebase-tools init
+npx firebase-tools init.
 Select Hosting and configure the files as needed.
 Deploy  app to Firebase Hosting.
-npm run build
-npx firebase-tools deploy --only hosting
+npm run build.
+npx firebase-tools deploy --only hosting.
+
 Configuration
 Create a .env file in the backend directory.
 Add your OpenAI API key to the .env file.
 
 # backend/.env
+
 OPENAI_API_KEY=your_openai_api_key
 Make sure to include the .env file in your .gitignore to prevent it from being pushed to the repository.
 # .gitignore
 .env
-Running the Application
-Start the Backend Server
-Navigate to the backend directory and start the server.
 
+
+Running the Application
+
+
+Start the Backend Server
+
+
+Navigate to the backend directory and start the server.
 cd backend
 node index.js
 Start the Frontend Server
@@ -92,6 +99,8 @@ cd rootdirectory
 npm start
 
 Project Structure
+
+
 Directories and Files
 client: Contains the React frontend code.
 src: Main source code directory.
@@ -104,6 +113,8 @@ index.js: Entry point for the React application.
 backend: Contains the Node.js backend code.
 index.js: Entry point for the backend server.
 .env: Environment variables for the backend.
+
+
 Usage
 Test Prompts for Excel
 Natural Language Description: "Create a formula to sum the values in cells A1 to A10."
