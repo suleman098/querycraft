@@ -15,7 +15,7 @@ QueryCraft is a web application designed to assist users in generating and expla
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/querycraft.git
+git clone https://github.com/suleman098/querycraft.git
 cd querycraft
 ```
 
